@@ -1,10 +1,22 @@
+:root {
+  --picton-light-blue: rgba(88, 179, 246, 255);
+  --picton-dark-blue: rgba(10, 128, 217, 255);
+}
+
 * {
   margin: 0;
   padding: 0;
 }
 
 body {
-  background-color: rgb(245, 245, 220);
+  background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(var(--picton-light-blue)),
+      to(var(--picton-dark-blue))
+    )
+    fixed;
   font-family: "Shadows Into Light", cursive;
   text-align: center;
 }
@@ -12,7 +24,7 @@ body {
 h1 {
   margin-top: 30px;
   font-size: 2.8rem;
-  color: rgb(76, 88, 67);
+  color: white;
 }
 
 .catalog {
@@ -23,8 +35,6 @@ h1 {
   flex-wrap: wrap;
   width: 80%;
   margin: 0 auto;
-  /* background-color: pink; */
-  /* margin-top: 40px; */
 }
 
 .book {
@@ -32,4 +42,6 @@ h1 {
   height: 200px;
   background-color: white;
   margin: 60px;
+  border: 2px solid black;
+  /* Futher book design */
 }
