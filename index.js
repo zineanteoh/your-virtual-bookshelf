@@ -26,6 +26,7 @@ function Book(title, author, pages, isRead) {
 }
 
 function displayLibrary() {
+  // Called when page is reloaded
   library.forEach(function (book) {
     catalog.appendChild(createBookElement(book));
   });
@@ -48,24 +49,31 @@ function processBook() {
 }
 
 function createBookElement(book) {
+  // Returns a document element of a book with title, author, pages, and button to delete
   let newBook = document.createElement("div");
   newBook.classList.add("book");
 
   let title = document.createElement("h3");
   let author = document.createElement("h3");
   let pages = document.createElement("h3");
-
   title.textContent = `"${book.title}"`;
   author.textContent = book.author;
   pages.textContent = book.pages;
 
+  let remove = document.createElement("div");
+  remove.classList.add("remove-book");
+  remove.innerHTML = '<i class="fas fa-times"></i>';
+  remove.addEventListener("click", () => {});
+
   newBook.appendChild(title);
   newBook.appendChild(author);
   newBook.appendChild(pages);
+  newBook.appendChild(remove);
   return newBook;
 }
 
 function clearWindow() {
+  // Resets all inputs within the popup window
   document.querySelector("#title").value = "";
   document.querySelector("#author").value = "";
   document.querySelector("#pages").value = "";
@@ -73,39 +81,11 @@ function clearWindow() {
 }
 
 function togglePopup() {
+  // Toggle overlay and popup window
   document.querySelector(".overlay").classList.toggle("hidden");
   document.querySelector(".popup").classList.toggle("hidden");
 }
 
-function storageAvailable(type) {
-  let storage;
-  try {
-    storage = window[type];
-    let x = "__storage_test__";
-    storage.setItem(x, x);
-    storage.removeItem(x);
-    return true;
-  } catch (e) {
-    return (
-      e instanceof DOMException &&
-      // everything except Firefox
-      (e.code === 22 ||
-        // Firefox
-        e.code === 1014 ||
-        // test name field too, because code might not be present
-        // everything except Firefox
-        e.name === "QuotaExceededError" ||
-        // Firefox
-        e.name === "NS_ERROR_DOM_QUOTA_REACHED") &&
-      // acknowledge QuotaExceededError only if there's something already stored
-      storage &&
-      storage.length !== 0
-    );
-  }
+if (library.length != 0) {
+  displayLibrary();
 }
-
-window.onload = () => {
-  if (library.length != 0) {
-    displayLibrary();
-  }
-};

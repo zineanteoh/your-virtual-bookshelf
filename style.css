@@ -24,6 +24,7 @@ h1 {
   padding-bottom: 30px;
   font-size: 2.8rem;
   background-color: white;
+  user-select: none;
 }
 
 .catalog {
@@ -37,12 +38,31 @@ h1 {
 }
 
 .book {
+  background-color: white;
+  border: 2px solid black;
   width: 150px;
   height: 200px;
-  background-color: white;
   margin: 60px;
-  border: 2px solid black;
+  position: relative;
   /* Futher book design */
+}
+
+.remove-book {
+  background-color: crimson;
+  color: white;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  user-select: none;
+  transition: transform 0.3s ease;
+}
+
+.remove-book:hover {
+  cursor: pointer;
+  transform: scale(1.3);
 }
 
 .add-button {
@@ -132,25 +152,3 @@ h1 {
   width: 80px;
   height: 50px;
 }
-
-/* .front-desk {
-  width: 60%;
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-}
-
-.front-desk input {
-  margin-right: 40px;
-  height: 20px;
-  padding-left: 10px;
-}
-
-.add-button {
-  font-size: 20px;
-  width: 80px;
-  height: 30px;
-  background-color: white;
-} */
