@@ -1,11 +1,16 @@
 :root {
-  --picton-light-blue: rgba(88, 179, 246, 255);
-  --picton-dark-blue: rgba(10, 128, 217, 255);
+  --picton-blue-light: rgba(88, 179, 246, 255);
+  --picton-blue-dark: rgba(10, 128, 217, 255);
+  --shelf-primary: rgba(158, 201, 250, 255);
+  --shelf-secondary: rgba(215, 232, 249, 255);
 }
 
 * {
   margin: 0;
   padding: 0;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box; /* Firefox, other Gecko */
+  box-sizing: border-box; /* Opera/IE 8+ */
 }
 
 body {
@@ -13,8 +18,8 @@ body {
       linear,
       left top,
       left bottom,
-      from(var(--picton-light-blue)),
-      to(var(--picton-dark-blue))
+      from(var(--picton-blue-light)),
+      to(var(--picton-blue-dark))
     )
     fixed;
   font-family: "Shadows Into Light", cursive;
@@ -26,6 +31,28 @@ h1 {
   font-size: 2.8rem;
   color: white;
 }
+
+/* .front-desk {
+  width: 60%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.front-desk input {
+  margin-right: 40px;
+  height: 20px;
+  padding-left: 10px;
+}
+
+.add-button {
+  font-size: 20px;
+  width: 80px;
+  height: 30px;
+  background-color: white;
+} */
 
 .catalog {
   display: flex;
@@ -44,4 +71,26 @@ h1 {
   margin: 60px;
   border: 2px solid black;
   /* Futher book design */
+}
+
+.add-book-button {
+  color: rgba(0, 138, 94, 0.8);
+  font-size: 34px;
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  right: 0;
+  bottom: 0;
+  margin: 20px;
+  padding-top: 2.5px;
+  padding-left: 1px;
+  border-radius: 50%;
+  background-color: rgba(156, 243, 138, 0.9);
+  transition: top 0.5s ease;
+}
+
+.add-book-button:hover {
+  background-color: rgba(156, 243, 138, 1);
+  cursor: pointer;
+  bottom: 10px;
 }

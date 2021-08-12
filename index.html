@@ -15,24 +15,22 @@
   </head>
   <body>
     <h1>📚 your virtual bookshelf 📚</h1>
-    <input type="button" value="Add Book" />
-    <div class="catalog">
-      <div class="book">
-        <span class="title">12 Lessons for the 21st Century</span>
-        <span class="author">Yuval Noah Harari</span>
-        <span class="pages">600</span>
-      </div>
-      <div class="book">
-        <span class="title">Sapiens</span>
-        <span class="author">Yuval Noah Harari</span>
-        <span class="pages">700</span>
-      </div>
-      <div class="book">
-        <span class="title">Factfulness</span>
-        <span class="author">Hans Rosling</span>
-        <span class="pages">430</span>
-      </div>
+    <div class="catalog"></div>
+    <div class="add-book-button" onclick="toggleAddNewBook()">
+      <i class="fas fa-plus"></i>
     </div>
+    <script
+      src="https://kit.fontawesome.com/5524d217a2.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="index.js"></script>
   </body>
 </html>
+
+<!-- <div class="front-desk">
+      <input type="text" name="book-title" id="book-title" placeholder="Title" />
+      <input type="text" name="book-author" id="book-author" placeholder="Author" />
+      <input type="text" name="book-page" id="book-page" placeholder="Pages" />
+      <input type="checkbox" name="book-read-status" id="book-read-status" />
+      <div class="add-button">Add Book</div>
+    </div> -->
