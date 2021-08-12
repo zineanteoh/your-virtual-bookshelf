@@ -1,4 +1,5 @@
-let myLibrary = [];
+let existingLibrary = JSON.parse(localStorage.getItem("library"));
+let library = existingLibrary || [];
 
 const catalog = document.querySelector(".catalog");
 const popup = document.querySelector(".add-button");
@@ -25,14 +26,15 @@ function Book(title, author, pages, isRead) {
 }
 
 function displayLibrary() {
-  myLibrary.forEach(function (book) {
+  library.forEach(function (book) {
     catalog.appendChild(createBookElement(book));
   });
 }
 
 function addBookToLibrary(book) {
-  myLibrary.push(book);
+  library.push(book);
   catalog.appendChild(createBookElement(book));
+  localStorage.setItem("library", JSON.stringify(library));
 }
 
 function processBook() {
@@ -74,3 +76,36 @@ function togglePopup() {
   document.querySelector(".overlay").classList.toggle("hidden");
   document.querySelector(".popup").classList.toggle("hidden");
 }
+
+function storageAvailable(type) {
+  let storage;
+  try {
+    storage = window[type];
+    let x = "__storage_test__";
+    storage.setItem(x, x);
+    storage.removeItem(x);
+    return true;
+  } catch (e) {
+    return (
+      e instanceof DOMException &&
+      // everything except Firefox
+      (e.code === 22 ||
+        // Firefox
+        e.code === 1014 ||
+        // test name field too, because code might not be present
+        // everything except Firefox
+        e.name === "QuotaExceededError" ||
+        // Firefox
+        e.name === "NS_ERROR_DOM_QUOTA_REACHED") &&
+      // acknowledge QuotaExceededError only if there's something already stored
+      storage &&
+      storage.length !== 0
+    );
+  }
+}
+
+window.onload = () => {
+  if (library.length != 0) {
+    displayLibrary();
+  }
+};

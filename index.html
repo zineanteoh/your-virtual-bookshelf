@@ -4,13 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Library - Zi</title>
+    <title>Your virtual Bookshelf</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -25,15 +22,7 @@
       <form action="#" onsubmit="processBook()" class="popup-form">
         <input type="text" name="title" id="title" placeholder="Title" required />
         <input type="text" name="author" id="author" placeholder="Author" required />
-        <input
-          type="number"
-          name="pages"
-          id="pages"
-          placeholder="Pages"
-          required
-          min="1"
-          max="10000"
-        />
+        <input type="number" name="pages" id="pages" placeholder="Pages" required min="1" max="10000" />
         <div class="book-status">
           <label for="status" id="status-label">Have you read it?</label>
           <input type="checkbox" name="status" id="status" />
@@ -41,18 +30,7 @@
         <input type="submit" id="submit" value="Submit" />
       </form>
     </div>
-    <script
-      src="https://kit.fontawesome.com/5524d217a2.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/5524d217a2.js" crossorigin="anonymous"></script>
     <script src="index.js"></script>
   </body>
 </html>
-
-<!-- <div class="front-desk">
-      <input type="text" name="book-title" id="book-title" placeholder="Title" />
-      <input type="text" name="book-author" id="book-author" placeholder="Author" />
-      <input type="text" name="book-page" id="book-page" placeholder="Pages" />
-      <input type="checkbox" name="book-read-status" id="book-read-status" />
-      <div class="add-button">Add Book</div>
-    </div> -->
