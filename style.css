@@ -27,9 +27,117 @@ body {
 }
 
 h1 {
-  margin-top: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   font-size: 2.8rem;
-  color: white;
+  background-color: white;
+}
+
+.catalog {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.book {
+  width: 150px;
+  height: 200px;
+  background-color: white;
+  margin: 60px;
+  border: 2px solid black;
+  /* Futher book design */
+}
+
+.add-button {
+  color: rgba(0, 138, 94, 0.8);
+  font-size: 34px;
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  right: 0;
+  bottom: 0;
+  margin: 20px;
+  padding-top: 2.5px;
+  padding-left: 1px;
+  border-radius: 50%;
+  background-color: rgba(156, 243, 138, 0.9);
+  transition: bottom 0.3s ease;
+}
+
+.add-button:hover {
+  background-color: rgba(156, 243, 138, 1);
+  cursor: pointer;
+  bottom: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.7;
+  background-color: black;
+  z-index: 999;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 400px;
+  margin: -200px 0 0 -150px;
+  background-color: beige;
+  z-index: 1000;
+}
+
+.popup h2 {
+  padding: 20px 0;
+}
+
+#title,
+#author,
+#pages {
+  width: 250px;
+  height: 50px;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  font-size: 24px;
+}
+
+.book-status {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+#status-label {
+  cursor: pointer;
+  user-select: none;
+}
+
+#status {
+  height: 20px;
+  width: 20px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+#submit {
+  width: 80px;
+  height: 50px;
 }
 
 /* .front-desk {
@@ -53,44 +161,3 @@ h1 {
   height: 30px;
   background-color: white;
 } */
-
-.catalog {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 80%;
-  margin: 0 auto;
-}
-
-.book {
-  width: 150px;
-  height: 200px;
-  background-color: white;
-  margin: 60px;
-  border: 2px solid black;
-  /* Futher book design */
-}
-
-.add-book-button {
-  color: rgba(0, 138, 94, 0.8);
-  font-size: 34px;
-  position: fixed;
-  width: 60px;
-  height: 60px;
-  right: 0;
-  bottom: 0;
-  margin: 20px;
-  padding-top: 2.5px;
-  padding-left: 1px;
-  border-radius: 50%;
-  background-color: rgba(156, 243, 138, 0.9);
-  transition: top 0.5s ease;
-}
-
-.add-book-button:hover {
-  background-color: rgba(156, 243, 138, 1);
-  cursor: pointer;
-  bottom: 10px;
-}
