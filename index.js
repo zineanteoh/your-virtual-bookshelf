@@ -26,7 +26,6 @@ function Book(title, author, pages, isRead) {
 }
 
 function displayLibrary() {
-  // Called when page is reloaded
   library.forEach(function (book) {
     catalog.appendChild(createBookElement(book));
   });
@@ -49,14 +48,13 @@ function processBook() {
 }
 
 function createBookElement(book) {
-  // Returns a document element of a book with title, author, pages, and button to delete
   let newBook = document.createElement("div");
   newBook.classList.add("book");
 
   let title = document.createElement("h3");
   let author = document.createElement("h3");
   let pages = document.createElement("h3");
-  title.textContent = `"${book.title}"`;
+  title.textContent = book.title;
   author.textContent = book.author;
   pages.textContent = book.pages;
 
@@ -73,7 +71,6 @@ function createBookElement(book) {
 }
 
 function clearWindow() {
-  // Resets all inputs within the popup window
   document.querySelector("#title").value = "";
   document.querySelector("#author").value = "";
   document.querySelector("#pages").value = "";
@@ -81,7 +78,6 @@ function clearWindow() {
 }
 
 function togglePopup() {
-  // Toggle overlay and popup window
   document.querySelector(".overlay").classList.toggle("hidden");
   document.querySelector(".popup").classList.toggle("hidden");
 }
