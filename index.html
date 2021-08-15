@@ -17,6 +17,11 @@
       <i class="fas fa-plus"></i>
     </div>
     <div class="overlay hidden"></div>
+    <div class="alert hidden">
+      <h2>Are you sure you want to delete?</h2>
+      <input type="button" value="Yes" class="alert-button" onclick="removeBook()" />
+      <input type="button" value="No" class="alert-button" onclick="toggleOverlayAndClearWindow()" />
+    </div>
     <div class="popup hidden">
       <h2>Add New Book</h2>
       <form action="#" onsubmit="processBook()" class="popup-form">

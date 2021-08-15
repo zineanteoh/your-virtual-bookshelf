@@ -5,8 +5,10 @@ const catalog = document.querySelector(".catalog");
 const popup = document.querySelector(".add-button");
 const overlay = document.querySelector(".overlay");
 
+let bookToRemove;
+
 // Resize text font to fit book titles inside their respective container
-const isOverflown = ({ clientHeight, scrollHeight }) => scrollHeight > clientHeight;
+const isOverflown = ({ clientHeight, scrollHeight, clientWidth, scrollWidth }) => scrollHeight > clientHeight || scrollWidth > clientWidth;
 const resizeText = ({ element, elements, minSize = 3, maxSize = 26, step = 1 }) => {
   (elements || [element]).forEach((el) => {
     let i = minSize;
@@ -23,12 +25,12 @@ const resizeText = ({ element, elements, minSize = 3, maxSize = 26, step = 1 }) 
   });
 };
 
-overlay.addEventListener("click", togglePopup);
+overlay.addEventListener("click", toggleOverlayAndClearWindow);
 popup.addEventListener("click", togglePopup);
 document.addEventListener("keydown", (event) => {
   if (!overlay.classList.contains("hidden")) {
     if (event.key == "Escape") {
-      togglePopup();
+      toggleOverlayAndClearWindow();
     }
   }
 });
@@ -63,7 +65,15 @@ function addBookToLibrary(book) {
   localStorage.setItem("library", JSON.stringify(library));
 }
 
-function removeBookFromLibrary(book) {}
+function removeBook() {
+  toggleOverlayAndClearWindow();
+  // removes bookToRemove from page
+  let childIndex = getChildIndex(bookToRemove);
+  bookToRemove.remove();
+
+  library.splice(childIndex, 1);
+  localStorage.setItem("library", JSON.stringify(library));
+}
 
 function processBook() {
   let title = document.querySelector("#title").value;
@@ -72,7 +82,7 @@ function processBook() {
   let isRead = document.querySelector("#status").checked;
   addBookToLibrary(new Book(title, author, pages, isRead));
   clearWindow();
-  togglePopup();
+  toggleOverlayAndClearWindow();
 }
 
 function createBookElement(book) {
@@ -90,15 +100,20 @@ function createBookElement(book) {
   remove.classList.add("remove-book");
   remove.innerHTML = '<i class="fas fa-times"></i>';
   remove.addEventListener("click", (event) => {
-    let book = event.target.parentNode;
-    if (book.classList.contains("remove-book")) {
-      book = book.parentNode;
+    toggleAlert();
+    bookToRemove = event.target.parentNode;
+    if (bookToRemove.classList.contains("remove-book")) {
+      bookToRemove = bookToRemove.parentNode;
     }
-    let childIndex = getChildIndex(book);
-    book.remove();
+    // let book = event.target.parentNode;
+    // if (book.classList.contains("remove-book")) {
+    //   book = book.parentNode;
+    // }
+    // let childIndex = getChildIndex(book);
+    // book.remove();
 
-    library.splice(childIndex, 1);
-    localStorage.setItem("library", JSON.stringify(library));
+    // library.splice(childIndex, 1);
+    // localStorage.setItem("library", JSON.stringify(library));
   });
 
   let toggleRead = document.createElement("div");
@@ -127,9 +142,20 @@ function clearWindow() {
   document.querySelector("#status").checked = false;
 }
 
+function toggleAlert() {
+  toggleOverlayAndClearWindow();
+  document.querySelector(".alert").classList.toggle("hidden");
+}
+
 function togglePopup() {
-  document.querySelector(".overlay").classList.toggle("hidden");
+  toggleOverlayAndClearWindow();
   document.querySelector(".popup").classList.toggle("hidden");
+}
+
+function toggleOverlayAndClearWindow() {
+  document.querySelector(".overlay").classList.toggle("hidden");
+  document.querySelector(".alert").classList.add("hidden");
+  document.querySelector(".popup").classList.add("hidden");
 }
 
 if (library.length != 0) {
