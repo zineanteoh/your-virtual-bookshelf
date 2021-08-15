@@ -105,20 +105,11 @@ function createBookElement(book) {
     if (bookToRemove.classList.contains("remove-book")) {
       bookToRemove = bookToRemove.parentNode;
     }
-    // let book = event.target.parentNode;
-    // if (book.classList.contains("remove-book")) {
-    //   book = book.parentNode;
-    // }
-    // let childIndex = getChildIndex(book);
-    // book.remove();
-
-    // library.splice(childIndex, 1);
-    // localStorage.setItem("library", JSON.stringify(library));
   });
 
+  // Read button
   let toggleRead = document.createElement("div");
   toggleRead.classList.add("toggle-read");
-  // Read button
 
   newBook.appendChild(title);
   newBook.appendChild(author);
