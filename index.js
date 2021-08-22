@@ -120,11 +120,13 @@ function createBookElement(book) {
   // Read button
   let toggleRead = document.createElement("div");
   toggleRead.classList.add("toggle-read");
+  toggleRead.textContent = "NEW";
 
   newBook.appendChild(title);
   newBook.appendChild(author);
   // newBook.appendChild(pages);
   newBook.appendChild(remove);
+  newBook.appendChild(toggleRead);
   return newBook;
 }
 
