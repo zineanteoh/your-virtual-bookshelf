@@ -6,6 +6,7 @@ const popup = document.querySelector(".add-button");
 const overlay = document.querySelector(".overlay");
 
 let bookToRemove;
+let bookToToggle;
 let isEmptySelf;
 
 // Resize text font to fit book titles inside their respective container
@@ -117,7 +118,7 @@ function createBookElement(book) {
     }
   });
 
-  // Read button
+  // Read toggle
   let toggleRead = document.createElement("div");
   toggleRead.classList.add("toggle-read");
   if (book.isRead) {
@@ -127,6 +128,21 @@ function createBookElement(book) {
     toggleRead.textContent = "NEW";
     toggleRead.classList.add("new-book");
   }
+  toggleRead.addEventListener("click", (event) => {
+    bookToToggle = event.target.parentNode;
+    let bookIndex = getChildIndex(bookToToggle);
+    if (library[bookIndex].isRead) {
+      toggleRead.classList.remove("read-book");
+      toggleRead.classList.add("new-book");
+      toggleRead.textContent = "NEW";
+    } else {
+      toggleRead.classList.remove("new-book");
+      toggleRead.classList.add("read-book");
+      toggleRead.textContent = "READ";
+    }
+    library[bookIndex].isRead = !library[bookIndex].isRead;
+    localStorage.setItem("library", JSON.stringify(library));
+  });
 
   newBook.appendChild(title);
   newBook.appendChild(author);

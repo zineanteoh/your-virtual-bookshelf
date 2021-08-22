@@ -98,13 +98,13 @@ h1 {
   position: absolute;
   height: 0;
   width: 80px;
-  border-bottom: 20px solid pink;
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
   left: -21px;
   top: 9px;
   transform: rotate(-45deg);
   cursor: pointer;
+  user-select: none;
 }
 
 .new-book {
