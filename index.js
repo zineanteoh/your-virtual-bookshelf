@@ -120,7 +120,13 @@ function createBookElement(book) {
   // Read button
   let toggleRead = document.createElement("div");
   toggleRead.classList.add("toggle-read");
-  toggleRead.textContent = "NEW";
+  if (book.isRead) {
+    toggleRead.textContent = "READ";
+    toggleRead.classList.add("read-book");
+  } else {
+    toggleRead.textContent = "NEW";
+    toggleRead.classList.add("new-book");
+  }
 
   newBook.appendChild(title);
   newBook.appendChild(author);
