@@ -6,6 +6,7 @@ const popup = document.querySelector(".add-button");
 const overlay = document.querySelector(".overlay");
 
 let bookToRemove;
+let isEmptySelf;
 
 // Resize text font to fit book titles inside their respective container
 const isOverflown = ({ clientHeight, scrollHeight, clientWidth, scrollWidth }) => scrollHeight > clientHeight || scrollWidth > clientWidth;
@@ -56,6 +57,10 @@ function displayLibrary() {
 }
 
 function addBookToLibrary(book) {
+  if (isEmptySelf) {
+    isEmptySelf = false;
+    document.querySelector(".empty-shelf").classList.add("hidden");
+  }
   library.push(book);
   catalog.appendChild(createBookElement(book));
   resizeText({
@@ -73,6 +78,11 @@ function removeBook() {
 
   library.splice(childIndex, 1);
   localStorage.setItem("library", JSON.stringify(library));
+
+  if (library.length == 0) {
+    isEmptySelf = true;
+    document.querySelector(".empty-shelf").classList.remove("hidden");
+  }
 }
 
 function processBook() {
@@ -151,4 +161,7 @@ function toggleOverlayAndClearWindow() {
 
 if (library.length != 0) {
   displayLibrary();
+} else {
+  isEmptySelf = true;
+  document.querySelector(".empty-shelf").classList.remove("hidden");
 }
